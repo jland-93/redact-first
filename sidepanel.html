@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redact First</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body class="ext">
+  <header class="top">
+    <div class="brand"><span class="mark">▮</span> Redact First</div>
+    <p class="tag">Your private details never leave this device. The cloud only sees placeholders.</p>
+    <div id="device" class="pill">Checking on-device model…</div>
+  </header>
+
+  <main class="grid">
+    <section class="card" id="step1">
+      <h2><span class="n">1</span> Paste what you want help with</h2>
+      <textarea id="input" spellcheck="false" placeholder="Paste an email, a ticket, meeting notes…"></textarea>
+      <div class="row">
+        <button id="sample" class="ghost">Load example</button>
+        <button id="scan" class="primary">Find sensitive info on this device</button>
+      </div>
+    </section>
+
+    <section class="card" id="step2">
+      <h2><span class="n">2</span> Review what gets hidden</h2>
+      <p class="hint" id="scanInfo">Nothing scanned yet.</p>
+      <div id="chips" class="chips"></div>
+      <h3>What the cloud will see</h3>
+      <pre id="masked" class="masked empty">—</pre>
+      <div class="row"><span class="hint">Using another AI chat? Copy this, paste it there.</span><button id="copy" class="ghost" disabled>Copy masked text</button></div>
+    </section>
+
+    <section class="card" id="step3">
+      <h2><span class="n">3</span> Ask the AI</h2>
+      <div class="row tasks">
+        <label><input type="radio" name="task" value="reply" checked /> Draft a reply</label>
+        <label><input type="radio" name="task" value="summarize" /> Summarize</label>
+        <label><input type="radio" name="task" value="actions" /> Action items</label>
+        <label><input type="radio" name="task" value="custom" /> Custom</label>
+      </div>
+      <input id="custom" class="custom" placeholder="e.g. Rewrite this more formally" hidden />
+      <div class="row">
+        <label class="where"><input type="checkbox" id="forceCloud" checked /> Use the cloud model for this task</label>
+        <button id="ask" class="primary" disabled>Send masked text</button>
+      </div>
+      <label class="confirm" id="confirmWrap" hidden><input type="checkbox" id="confirm" /> No on-device model here, so detection used simpler local rules. I checked step 2 and the masked text is safe to send.</label>
+      <h3>Result, restored on this device</h3>
+      <div id="result" class="result empty">—</div>
+      <details id="raw" hidden><summary>Show the raw cloud response</summary><pre id="rawText"></pre></details>
+      <p id="audit" class="audit"></p>
+      <h3>Got an answer from another AI?</h3>
+      <textarea id="foreign" class="foreign" spellcheck="false" placeholder="Paste its answer with the [PLACEHOLDERS] here"></textarea>
+      <div class="row"><span class="hint">Placeholders are swapped back on this device.</span><button id="restore" class="ghost" disabled>Restore real values</button></div>
+      <div id="restored" class="result empty" hidden>—</div>
+    </section>
+  </main>
+
+  <footer class="foot">Built with Firebase AI Logic hybrid inference: Gemini Nano on-device for detection, Gemini in the cloud for heavy lifting.</footer>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

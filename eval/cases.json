@@ -1,0 +1,14 @@
+[
+ {"text":"Hi Priya, can you resend the contract to Daniel Okafor at daniel.okafor@brightpath.co? His cell is 312-555-0198.","gold":["Priya","Daniel Okafor","daniel.okafor@brightpath.co","312-555-0198"]},
+ {"text":"Patient Maria Gonzalez, DOB 1979-11-02, MRN 4471-20833, reported chest pain. Follow up at 55 Oak Street.","gold":["Maria Gonzalez","1979-11-02","4471-20833","55 Oak Street"]},
+ {"text":"Use this key for the test: sk-live-9fJ2kLm4Qp8xZt7Wv3 and do not share the admin password Winter2026!","gold":["sk-live-9fJ2kLm4Qp8xZt7Wv3","Winter2026!"]},
+ {"text":"Our Q3 revenue was $4.2M and Project Nightingale launches in March; keep it internal.","gold":["$4.2M","Nightingale"]},
+ {"text":"Refund order ORD-778120 for Tom Becker, card ending 4111 1111 1111 1111.","gold":["ORD-778120","Tom Becker","4111 1111 1111 1111"]},
+ {"text":"Please summarize the meeting: Alex Kim agreed to send the deck, and Jordan Lee will book the venue.","gold":["Alex Kim","Jordan Lee"]},
+ {"text":"Employee ID E-20391 (Sam Patel) is on leave until June. Contact HR at hr@northwind.io.","gold":["E-20391","Sam Patel","hr@northwind.io"]},
+ {"text":"Wire $18,500 to account 0012345678 at First Union Bank, beneficiary Laura Chen.","gold":["$18,500","0012345678","Laura Chen"]},
+ {"text":"Draft a reply to Ken Watanabe about his passport number X12345678 being expired.","gold":["Ken Watanabe","X12345678"]},
+ {"text":"The new pricing for codename Orion is $99 per month; customer Acme wants a demo.","gold":["Orion","$99"]},
+ {"text":"Call me at +44 20 7946 0958 or write to 221B Baker Street, London. — Hannah Moore","gold":["+44 20 7946 0958","221B Baker Street","Hannah Moore"]},
+ {"text":"Can you make this sentence sound more professional: we will ship the update next week.","gold":[]}
+]

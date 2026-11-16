@@ -1,0 +1,14 @@
+{
+  "name": "redact-first",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host localhost --port 5173",
+    "build": "vite build",
+    "build:ext": "sed -e 's#<body>#<body class=\"ext\">#' -e 's#href=\"/src/style.css\"#href=\"./src/style.css\"#' -e 's#src=\"/src/main.js\"#src=\"./src/main.js\"#' index.html > sidepanel.html && vite build -c vite.ext.config.js"
+  },
+  "dependencies": {
+    "firebase": "^13.3.0",
+    "vite": "^8.3.8"
+  }
+}

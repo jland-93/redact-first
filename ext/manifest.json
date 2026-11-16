@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Redact First",
+  "version": "0.1.0",
+  "description": "Hide personal and confidential details on your device before any AI sees them. Gemini Nano on-device, Gemini in the cloud.",
+  "permissions": ["sidePanel", "contextMenus", "storage"],
+  "background": { "service_worker": "background.js" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "action": { "default_title": "Open Redact First" },
+  "minimum_chrome_version": "138"
+}
