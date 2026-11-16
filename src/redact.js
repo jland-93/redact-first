@@ -43,7 +43,7 @@ export function ruleDetect(text) {
   const items = [];
   for (const { type, re } of RULES) {
     for (const m of text.matchAll(re)) {
-      const t = m[0].trim().replace(/[.,;:!?)]+$/, "");
+      const t = type === "SECRET" ? m[0].trim().replace(/[.,;:)]+$/, "") : m[0].trim().replace(/[.,;:!?)]+$/, "");
       if (type === "PERSON") {
         const words = t.split(" ");
         while (words.length && NOT_NAMES.test(words[0])) words.shift();
@@ -63,6 +63,7 @@ export function mergeItems(text, ...lists) {
     for (const it of list) {
       const t = (it.text || "").trim();
       if (t.length < 2 || !text.includes(t)) continue;
+      if (it.type === "DATE_OF_BIRTH" && !/\d/.test(t)) continue;
       if (!seen.has(t)) seen.set(t, { text: t, type: TYPES.includes(it.type) ? it.type : "CONFIDENTIAL", on: true });
     }
   }

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite --host localhost --port 5173",
     "build": "vite build",
+    "test": "node --test test/redact.test.js",
     "build:ext": "sed -e 's#<body>#<body class=\"ext\">#' -e 's#href=\"/src/style.css\"#href=\"./src/style.css\"#' -e 's#src=\"/src/main.js\"#src=\"./src/main.js\"#' index.html > sidepanel.html && vite build -c vite.ext.config.js"
   },
   "dependencies": {

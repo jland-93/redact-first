@@ -38,6 +38,7 @@ button.ghost { color: var(--mute); }
 .tasks label, .where { font-size: 14px; display: inline-flex; gap: 6px; align-items: center; }
 .custom { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; font: inherit; }
 .audit { margin: 0; font-size: 13px; color: var(--ok); }
+.audit.warn { color: var(--warn); }
 details summary { cursor: pointer; font-size: 13px; color: var(--mute); }
 .foot { padding: 8px 28px 28px; color: var(--mute); font-size: 13px; }
 .foreign { min-height: 110px; }

@@ -100,9 +100,10 @@ $("ask").onclick = async () => {
   const task = document.querySelector('input[name=task]:checked').value;
   const prompt = buildPrompt(task, $("custom").value || "Help with this text.", current.masked);
   const where = $("forceCloud").checked ? "cloud" : "auto";
-  if (ruleOnly && !$("confirm").checked) { $("audit").textContent = "Please review step 2 and tick the box above before sending."; return; }
+  $("audit").classList.remove("warn");
+  if (ruleOnly && !$("confirm").checked) { $("audit").textContent = "Please review step 2 and tick the box above before sending."; $("audit").classList.add("warn"); return; }
   const stillVisible = leaked(prompt, current.map);
-  if (stillVisible.length) { $("audit").textContent = "Blocked: some hidden values are still in the prompt."; return; }
+  if (stillVisible.length) { $("audit").textContent = "Blocked: some hidden values are still in the prompt."; $("audit").classList.add("warn"); return; }
   $("ask").disabled = true;
   $("result").textContent = "Working…";
   try {
