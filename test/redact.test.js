@@ -20,3 +20,15 @@ test("real birth date is still kept", () => {
   const items = mergeItems(text, ruleDetect(text));
   assert.ok(items.some((i) => i.type === "DATE_OF_BIRTH" && i.text === "1987-03-12"));
 });
+
+test("labeled identifiers, greeting names and bare passwords are found by rules", () => {
+  const text = "Hi Priya, MRN 4471-20833 and passport number X12345678; the admin password Winter2026! stays private.";
+  const got = mergeItems(text, ruleDetect(text)).map((i) => i.text);
+  for (const v of ["Priya", "4471-20833", "X12345678", "Winter2026!"]) assert.ok(got.includes(v), v);
+});
+
+test("titles, organisations and ordinary words are not masked", () => {
+  for (const text of ["Dear Sir, thanks!", "Please reset your password before Monday.", "Wire it to First Union Bank today.", "Our account manager will join."]) {
+    assert.equal(mergeItems(text, ruleDetect(text)).length, 0, text);
+  }
+});

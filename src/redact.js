@@ -29,25 +29,30 @@ const RULES = [
   { type: "FINANCIAL", re: /\b(?:\d[ -]?){13,19}\b/g },
   { type: "SECRET", re: /\b(?:sk|pk|AKIA|ghp|xox[baprs])[-_A-Za-z0-9]{12,}\b/g },
   { type: "SECRET", re: /(?<=password(?: is|:)\s*)\S+/gi },
+  { type: "SECRET", re: /(?<=\b(?:password|passcode|pwd)\s+)(?=\S*[\d!@#$%^&*])\S+/gi },
   { type: "DATE_OF_BIRTH", re: /(?<=(?:born|birth|DOB)[^\d]{0,20})\d{4}-\d{2}-\d{2}/gi },
   { type: "ID_NUMBER", re: /\b[A-Z]{2,6}-\d{3,}\b/g },
+  { type: "ID_NUMBER", re: /(?<=\b(?:MRN|employee ID|member ID|customer ID|ID|SSN|account(?: number| no\.?)?|passport(?: number| no\.?)?|licen[cs]e(?: number)?|policy(?: number)?|case(?: number)?|claim(?: number)?)[:#]?\s+)(?=[A-Z0-9-]*\d{3})[A-Z0-9][A-Z0-9-]{3,}\b/gi },
   { type: "ADDRESS", re: /\b\d{1,5}(?: [A-Z][a-z]+)+ (?:Street|St|Avenue|Ave|Road|Rd|Terrace|Lane|Ln|Drive|Dr|Boulevard|Blvd|Way|Court|Ct|Place|Pl)\b\.?/g },
   { type: "FINANCIAL", re: /\$\d[\d,]*(?:\.\d+)?(?:\/\w+)?/g },
   { type: "CONFIDENTIAL", re: /(?<=(?:[Pp]roject|[Cc]ode ?name)(?: is)?\s+"?)[A-Z][A-Za-z0-9]+/g },
+  { type: "PERSON", single: true, re: /(?<=\b(?:Hi|Hello|Hey|Dear)\s)(?!(?:Sir|Madam|Team|All|Everyone|Friends|Colleagues|Customer|There)\b)[A-Z][a-z]+(?=[,!])/g },
   { type: "PERSON", re: /(?<!\d )\b[A-Z][a-z]+(?: [A-Z][a-z]+(?:-[A-Z][a-z]+)?){1,3}\b/g },
 ];
+
+const NOT_PEOPLE = /\b(?:Bank|Inc|Corp|LLC|Ltd|University|Hospital|Group|Company|Foundation|Institute|Agency)\.?$/;
 
 const NOT_NAMES = /^(?:Hi|Dear|Hello|Thanks|Thank|Our|The|Please|Customer|Team|She|He|They|We|If|Her|His)\b/;
 
 export function ruleDetect(text) {
   const items = [];
-  for (const { type, re } of RULES) {
+  for (const { type, re, single } of RULES) {
     for (const m of text.matchAll(re)) {
       const t = type === "SECRET" ? m[0].trim().replace(/[.,;:)]+$/, "") : m[0].trim().replace(/[.,;:!?)]+$/, "");
-      if (type === "PERSON") {
+      if (type === "PERSON" && !single) {
         const words = t.split(" ");
         while (words.length && NOT_NAMES.test(words[0])) words.shift();
-        if (words.length < 2) continue;
+        if (words.length < 2 || NOT_PEOPLE.test(words.join(" "))) continue;
         items.push({ text: words.join(" "), type });
         continue;
       }

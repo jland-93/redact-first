@@ -46,7 +46,7 @@ Other Firebase products: **App Check** (reCAPTCHA Enterprise for the web app, de
 
 ## Evaluation
 
-See [eval/RESULTS.md](eval/RESULTS.md): on 12 self-written work messages with 30 sensitive values, Gemini Nano on-device plus rules found 30/30; local rules alone found 24/30.
+See [eval/RESULTS.md](eval/RESULTS.md): on 12 self-written work messages with 30 sensitive values, Gemini Nano on-device plus rules found 30/30; local rules alone found 24/30 in the first version and 30/30 after a rule update (written while looking at this set; a separate held-out check found 9/9 with no false masks).
 
 ## Built during the submission period
 

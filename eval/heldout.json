@@ -1,0 +1,55 @@
+{
+ "no_sensitive": [
+  "Please reset your password before Monday.",
+  "We wrote a case study about onboarding.",
+  "Our account manager will join the call.",
+  "Bring your ID card to the office.",
+  "Hi team, the release is delayed.",
+  "Dear Sir, thanks for the update!",
+  "The policy number format changed last year.",
+  "Hello everyone, standup moved to 10.",
+  "Our partner is Deutsche Bank and Acme Group.",
+  "The password policy requires 12 characters."
+ ],
+ "cases": [
+  {
+   "text": "Hi Aiko, your claim number CLM-88213 is approved.",
+   "gold": [
+    "Aiko",
+    "CLM-88213"
+   ]
+  },
+  {
+   "text": "Customer ID 7730-1192 asked about a refund.",
+   "gold": [
+    "7730-1192"
+   ]
+  },
+  {
+   "text": "Dear Marcus, the wifi password is Blue#Fox2026.",
+   "gold": [
+    "Marcus",
+    "Blue#Fox2026"
+   ]
+  },
+  {
+   "text": "His SSN 123-45-6789 must not be shared.",
+   "gold": [
+    "123-45-6789"
+   ]
+  },
+  {
+   "text": "Send it to account no. 55012398 at Chase.",
+   "gold": [
+    "55012398"
+   ]
+  },
+  {
+   "text": "Hello Lena! Passport number M7731205 expires soon.",
+   "gold": [
+    "Lena",
+    "M7731205"
+   ]
+  }
+ ]
+}
